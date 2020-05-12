@@ -1,10 +1,13 @@
-from functions import getTweets, polarityCheck
+from client import client
 
 def main():
     num = int(input('Enter a number: '))
     search = input('Enter a query: ')
 
-    polarityCheck(getTweets(search, num))
+    foo = client(search, num)
+    foo.getTweets()
+    foo.checkPolarity()
 
 if __name__ == '__main__':
     main()
+
