@@ -1,6 +1,4 @@
 import tweepy
-from tweepy import OAuthHandler
-from textblob import TextBlob
 
 consumer_key = 'eBKSNsuffFGsACqyysXPWKxRW'
 consumer_key_secret = 'cA1XKwamNZffGH3kwnPOUqzGxvmHNBv2FnGQuheuOfyWK2t83r'
@@ -26,22 +24,4 @@ class client:
             if tweet not in self.tweets:
                 self.tweets.append(tweet.text)
 
-    def checkPolarity(self):
-        sentimentP = []
-        sentimentN = []
-        sentimentNe = []
-        for tweet in self.tweets:
-            testimonial = TextBlob(tweet)
-            if testimonial.sentiment.polarity > 0:
-                sentimentP.append(tweet)
-            if testimonial.sentiment.polarity < 0:
-                sentimentN.append(tweet)
-            if testimonial.sentiment.polarity == 0:
-                sentimentNe.append(tweet)
-        print('Percentage of positive tweets:' + str(
-            float(len(sentimentP) / (len(sentimentN) + len(sentimentP) + len(sentimentNe))) * 100))
-        print('Percentage of negative tweets:' + str(
-            float(len(sentimentN) / (len(sentimentN) + len(sentimentP) + len(sentimentNe))) * 100))
-        print('Percentage of neutral tweets:' + str(
-            float(len(sentimentNe) / (len(sentimentN) + len(sentimentP) + len(sentimentNe))) * 100))
 
