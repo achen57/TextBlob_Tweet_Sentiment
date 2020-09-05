@@ -18,7 +18,7 @@ class client:
         self.count = count
         self.tweets = tweets
 
-    def getTweets(self):
+    def searchTweets(self):
         parsedTweets = api.search(q=self.query, count=self.count)
         for tweet in parsedTweets:
             if tweet not in self.tweets:
