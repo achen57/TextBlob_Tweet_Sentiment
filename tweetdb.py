@@ -16,3 +16,4 @@ def insertDb(arr):
 def displayDb():
     c.execute("SELECT * FROM tweets")
     print(c.fetchall())
+
