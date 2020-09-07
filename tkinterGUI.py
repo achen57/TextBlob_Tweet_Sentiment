@@ -9,19 +9,19 @@ def execute():
     # Check if integer was entered
     try:
         int(num.get())
-        numCheck.config(text = "Thank you!")
+        numCheck.config(text = "Tweet data recorded")
         # Parse num of tweets based on query into class
         foo = client(query.get(), num.get())
         foo.searchTweets()
         createTweetsArray(foo.tweets)
-        # Insert data into Sqlite and close connection
+        # Insert data into Sqlite
         insertDb(foo.tweets)
+        foo.tweets.clear()
         # Delete entry data
         num.delete(0,END)
         query.delete(0,END)
+        # Commit changes to database
         conn.commit()
-        conn.close()
-        del foo.tweets
     except ValueError:
         numCheck.config(text = "Enter a valid integer")
         num.delete(0,END)
@@ -48,3 +48,6 @@ search_btn = Button(root, text="Search for tweets", command=execute)
 search_btn.grid(row=4, column=0, columnspan=2, pady=10, padx=10, ipadx=10)
 
 root.mainloop()
+
+# Close database connection
+conn.close()
