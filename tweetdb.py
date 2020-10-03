@@ -3,11 +3,15 @@ import sqlite3
 conn = sqlite3.connect('tweets.db')
 c = conn.cursor()
 
-#c.execute("""CREATE TABLE tweets (
-#           Username text,
-#           Tweet text,
-#           Polarity float,
-#           Sentiment text)""")
+def createDb():
+    try:
+        c.execute("""CREATE TABLE tweets (
+                   Username text,
+                   Tweet text,
+                   Polarity float,
+                   Sentiment text)""")
+    except:
+        print("Database already initialized")
 
 def insertDb(arr):
     for i in range(len(arr)):

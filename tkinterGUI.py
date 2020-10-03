@@ -6,6 +6,8 @@ from client import client
 root = Tk()
 
 def execute():
+    #Checks if database is created
+    createDb()
     # Check if integer was entered
     try:
         int(num.get())
@@ -25,7 +27,6 @@ def execute():
     except ValueError:
         numCheck.config(text = "Enter a valid integer")
         num.delete(0,END)
-
 
 # Create text boxes
 num = Entry(root, width=30)
